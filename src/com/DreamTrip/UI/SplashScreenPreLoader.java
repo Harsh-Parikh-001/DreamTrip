@@ -9,21 +9,14 @@ import javafx.stage.StageStyle;
 
 public class SplashScreenPreLoader extends Preloader
 {
-
 	private Stage preloaderStage;
 	private Scene scene;
-
-	public SplashScreenPreLoader() {
-
-	}
-
 	@Override
 	public void init() throws Exception
 	{
 		Parent root1 = FXMLLoader.load(getClass().getResource("SplashScreen.fxml"));
 		scene = new Scene(root1);
 	}
-
 	@Override
 	public void start(Stage primaryStage)
 	{
@@ -32,7 +25,6 @@ public class SplashScreenPreLoader extends Preloader
 		preloaderStage.initStyle(StageStyle.UNDECORATED);
 		preloaderStage.show();
 	}
-
 	@Override
 	public void handleApplicationNotification(Preloader.PreloaderNotification info)
 	{
@@ -42,7 +34,6 @@ public class SplashScreenPreLoader extends Preloader
 			SplashScreenController.statProgressBar.setProgress(((ProgressNotification) info).getProgress());
 		}
 	}
-
 	@Override
 	public void handleStateChangeNotification(Preloader.StateChangeNotification info)
 	{
@@ -50,15 +41,12 @@ public class SplashScreenPreLoader extends Preloader
 		switch (type)
 		{
 			case BEFORE_LOAD:
-				break;
 			case BEFORE_INIT:
 				break;
 			case BEFORE_START:
-				System.out.println("BEFORE_START");
 				preloaderStage.hide();
 				break;
+
 		}
-
-
 	}
 }

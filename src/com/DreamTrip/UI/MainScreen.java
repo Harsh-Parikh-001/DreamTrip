@@ -1,5 +1,4 @@
 package com.DreamTrip.UI;
-
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Preloader;
@@ -7,14 +6,12 @@ import javafx.stage.Stage;
 
 public class MainScreen extends Application
 {
-
 	private static final int COUNT_LIMIT = 10;
 	@Override
-	public void start(Stage stage)
+	public void start(Stage stage) throws Exception
 	{
-		HomePage homePage = new HomePage();
+//		Code to add next screen goes here
 	}
-
 	@Override
 	public void init() throws Exception
 	{
@@ -24,11 +21,9 @@ public class MainScreen extends Application
 			LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
 			Thread.sleep(400);
 		}
-
 	}
 	public static void main(String[] args)
 	{
 		LauncherImpl.launchApplication(MainScreen.class, SplashScreenPreLoader.class, args);
 	}
-
 }
