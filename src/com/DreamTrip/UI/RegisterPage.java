@@ -26,14 +26,14 @@ public class RegisterPage implements Initializable {
 			public void handle(ActionEvent event) {
 				Parent root = null;
 				try {
-					root = FXMLLoader.load(getClass().getResource("Nav.fxml"));
+					root = FXMLLoader.load(getClass().getResource("NavHotel.fxml"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				Scene scene = new Scene(root,800,700);
+				Scene scene = new Scene(root,1300,650);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 				stage.setScene(scene);
-				stage.setTitle("Search");
+				stage.setTitle("Hotels");
 				stage.show();
 			}
 		});

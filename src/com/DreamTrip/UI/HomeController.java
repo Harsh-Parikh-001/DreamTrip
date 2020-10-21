@@ -9,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,8 +28,7 @@ public class HomeController implements Initializable {
 			@Override
 			public void handle (ActionEvent event) {
 				Parent root = null;
-				try
-				{
+				try {
 					root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -41,7 +39,6 @@ public class HomeController implements Initializable {
 				stage.setTitle("Login");
 				stage.show();
 			}
-
 		});
 
 		register_bt.setOnAction(new EventHandler<ActionEvent>() {
