@@ -1,5 +1,6 @@
 package com.DreamTrip.UI;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +9,7 @@ import javafx.geometry.*;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ScrollEvent;
@@ -44,10 +42,10 @@ public class NavHotel implements Initializable {
 	HBox hbox;
 
 	@FXML
-	Label flight;
+	Label flight_id;
 
 	@FXML
-	Label train;
+	Label train_id;
 
 
 	Color color1 = Color.web("#A9A9A9");
@@ -60,32 +58,32 @@ public class NavHotel implements Initializable {
 		VBox vBox = new VBox();
 		List<HBox> rectangleList = createClickableRectangles();
 		for(HBox rectangle:rectangleList) {
-			Rectangle border = new Rectangle(1153,1);
+			Rectangle border = new Rectangle(1300,1);
 			border.setFill(Color.BLACK);
 			vBox.getChildren().add(border);
 			vBox.getChildren().add(rectangle);
 		}
-		flight.setOnMouseClicked(event -> {
+		flight_id.setOnMouseClicked(event -> {
 			Parent root = null;
 			try {
 				root = FXMLLoader.load(getClass().getResource("NavFli.fxml"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			Scene scene = new Scene(root,1300,650);
+			Scene scene = new Scene(root,1300,700);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
 			stage.setTitle("Flights");
 			stage.show();
 		});
-		train.setOnMouseClicked(event -> {
+		train_id.setOnMouseClicked(event -> {
 			Parent root = null;
 			try {
 				root = FXMLLoader.load(getClass().getResource("NavTrain.fxml"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			Scene scene = new Scene(root,1300,650);
+				Scene scene = new Scene(root,1300,700);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
 			stage.setTitle("Trains");
@@ -104,6 +102,62 @@ public class NavHotel implements Initializable {
 		});
 	}
 
+	private MenuBar createMenu() {
+		Menu Page = new Menu("Pages");
+		MenuItem Cart = new MenuItem("Cart");
+		MenuItem Hotels = new MenuItem("Hotels");
+		Hotels.setOnAction(event -> {
+			Parent root = null;
+			try {
+				root = FXMLLoader.load(getClass().getResource("NavHotels.fxml"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(root,1300,700);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.setTitle("Hotels");
+			stage.show();
+		});
+		MenuItem Flight = new MenuItem("Flight");
+		Flight.setOnAction(event -> {
+			Parent root = null;
+			try {
+				root = FXMLLoader.load(getClass().getResource("NavFli.fxml"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(root,1300,700);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.setTitle("Flights");
+			stage.show();
+		});
+		MenuItem Train = new MenuItem("Trains");
+		Train.setOnAction(event -> {
+			Parent root = null;
+			try {
+				root = FXMLLoader.load(getClass().getResource("NavTrain.fxml"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(root,1300,700);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.setTitle("Trains");
+			stage.show();
+		});
+		MenuItem Exit = new MenuItem("Exit");
+		Exit.setOnAction(event -> {
+			Platform.exit();
+			System.exit(0);
+		});
+		MenuBar menu = new MenuBar();
+		Page.getItems().addAll(Cart,Hotels,Flight,Train,Exit);
+		menu.getMenus().addAll(Page);
+		return menu;
+	}
+
 	private List<HBox> createClickableRectangles(){
 		List<HBox> rectangleList = new ArrayList<>();
 		Hotel hotel = new Hotel();
@@ -111,7 +165,7 @@ public class NavHotel implements Initializable {
 		{
 			HBox rectangle = new HBox();;
 			rectangle.setMinHeight(150);
-			rectangle.setMinWidth(1153);
+			rectangle.setMinWidth(1300);
 			rectangle.setBackground(new Background(new BackgroundFill(color,
 					CornerRadii.EMPTY, Insets.EMPTY)));
 			Label hotel_name = new Label();
