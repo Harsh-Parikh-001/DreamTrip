@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Pattern;
 
 public class LoginPage implements Initializable {
 	@FXML
@@ -29,14 +28,20 @@ public class LoginPage implements Initializable {
 	PasswordField psswd;
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		navigation_bt.setOnAction(new EventHandler<ActionEvent>() {
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		navigation_bt.setOnAction(new EventHandler<ActionEvent>()
+		{
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event)
+			{
 				Parent root = null;
-				try {
+				try
+				{
 					root = FXMLLoader.load(getClass().getResource("NavHotel.fxml"));
-				} catch (IOException e) {
+				}
+				catch (IOException e)
+				{
 					e.printStackTrace();
 				}
 				Scene scene = new Scene(root,1300,700);
