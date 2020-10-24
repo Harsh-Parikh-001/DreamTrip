@@ -23,36 +23,51 @@ public class HomeController implements Initializable {
 	Button register_bt;
 
 	@Override
-	public void initialize (URL location, ResourceBundle resources) {
-		login_bt.setOnAction(new EventHandler<ActionEvent>() {
+	public void initialize (URL location, ResourceBundle resources)
+	{
+		login_bt.setOnAction(new EventHandler<ActionEvent>()
+		{
 			@Override
-			public void handle (ActionEvent event) {
+			public void handle (ActionEvent event)
+			{
 				Parent root = null;
-				try {
+				try
+				{
 					root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-				} catch (IOException e) {
+				}
+				catch (IOException e)
+				{
 					e.printStackTrace();
 				}
 				Scene scene = new Scene(root,800,700);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				stage.setMinWidth(800);
+				stage.setMinHeight(700);
 				stage.setScene(scene);
 				stage.setTitle("Login");
 				stage.show();
 			}
 		});
 
-		register_bt.setOnAction(new EventHandler<ActionEvent>() {
+		register_bt.setOnAction(new EventHandler<ActionEvent>()
+		{
 			@Override
-			public void handle(ActionEvent event) {
+			public void handle(ActionEvent event)
+			{
 				Parent root = null;
-				try {
+				try
+				{
 					root = FXMLLoader.load(getClass().getResource("RegisterPage.fxml"));
-				} catch (IOException e) {
+				}
+				catch (IOException e)
+				{
 					e.printStackTrace();
 				}
 				Scene scene = new Scene(root,800,700);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 				stage.setScene(scene);
+				stage.setMinWidth(800);
+				stage.setMinHeight(700);
 				stage.setTitle("Register");
 				stage.show();
 			}
