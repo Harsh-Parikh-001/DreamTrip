@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" minHeight="500" minWidth="700" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.NavTrain">
+<AnchorPane fx:id="anchorPane" minHeight="500" minWidth="700" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.Nav">
    <children>
       <HBox fx:id="hbox" alignment="CENTER_LEFT" style="-fx-background-color: #008080;" AnchorPane.bottomAnchor="450.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       </HBox>
@@ -15,17 +15,22 @@
                <Image url="@Logo.jpg" />
             </ImageView>
             <Separator prefWidth="200.0" />
-            <Label fx:id="hotel_l" maxHeight="25.0" maxWidth="68.0" minHeight="25.0" prefWidth="68.0" text="Hotels " textFill="#b5b4b4">
+            <Label fx:id="hotel_id" maxHeight="25.0" maxWidth="68.0" minHeight="25.0" prefWidth="68.0" text="Hotels  &gt;" textFill="#b5b4b4">
                <font>
                   <Font size="15.0" />
                </font></Label>
             <Separator prefWidth="200.0" />
-            <Label fx:id="flight_l" maxHeight="25.0" minHeight="25.0" minWidth="68.0" text="Flights" textFill="#bfb6b6">
+            <Label fx:id="flight_id" maxHeight="25.0" minHeight="25.0" minWidth="68.0" text="Flights" textFill="#bfb6b6">
                <font>
                   <Font size="15.0" />
                </font></Label>
             <Separator prefWidth="200.0" />
-            <Label fx:id="train" minHeight="25.0" minWidth="68.0" text="Trains &gt;" textFill="#b5abab">
+            <Label fx:id="train_id" minHeight="25.0" minWidth="68.0" text="Trains" textFill="#b5abab">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="cart_id" minHeight="25.0" minWidth="68.0" text="Cart" textFill="#b5abab">
                <font>
                   <Font size="15.0" />
                </font>
