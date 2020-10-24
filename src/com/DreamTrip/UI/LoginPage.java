@@ -9,15 +9,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class LoginPage implements Initializable {
 	@FXML
 	Button navigation_bt;
+
+	@FXML
+	TextField email_tf;
+
+	@FXML
+	PasswordField psswd;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -30,7 +39,7 @@ public class LoginPage implements Initializable {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				Scene scene = new Scene(root,1300,650);
+				Scene scene = new Scene(root,1300,700);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 				stage.setScene(scene);
 				stage.setTitle("Hotels");

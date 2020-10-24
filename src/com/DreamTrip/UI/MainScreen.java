@@ -17,7 +17,7 @@ public class MainScreen extends Application
 		primaryStage.setTitle("DreamTrip");
 		primaryStage.setScene(new Scene(root, 800, 700));
 		primaryStage.setMinWidth(800);
-		primaryStage.setMaxHeight(700);
+		primaryStage.setMinHeight(700);
 		primaryStage.show();
 	}
 	@Override
