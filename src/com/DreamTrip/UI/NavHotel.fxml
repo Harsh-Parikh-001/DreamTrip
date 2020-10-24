@@ -15,7 +15,7 @@
                <Image url="@Logo.jpg" />
             </ImageView>
             <Separator prefWidth="200.0" />
-            <Label maxHeight="25.0" maxWidth="68.0" minHeight="25.0" prefWidth="68.0" text=" Hotels  &gt;" textFill="#b5b4b4">
+            <Label fx:id="hotel_id" maxHeight="25.0" maxWidth="68.0" minHeight="25.0" prefWidth="68.0" text="Hotels  &gt;" textFill="#b5b4b4">
                <font>
                   <Font size="15.0" />
                </font></Label>
