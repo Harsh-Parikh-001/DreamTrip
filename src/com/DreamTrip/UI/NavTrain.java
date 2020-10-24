@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -41,10 +43,11 @@ public class NavTrain implements Initializable {
 	HBox hbox;
 
 	@FXML
-	Label hotel;
+	Label hotel_l;
 
 	@FXML
-	Label fli;
+	Label flight_l;
+
 
 	Color color1 = Color.web("#A9A9A9");
 	Color color = Color.web("#D3D3D3");
@@ -56,35 +59,35 @@ public class NavTrain implements Initializable {
 		VBox vBox = new VBox();
 		List<HBox> rectangleList = createClickableRectangles();
 		for(HBox rectangle:rectangleList) {
-			Rectangle border = new Rectangle(1153,1);
+			Rectangle border = new Rectangle(1300,1);
 			border.setFill(Color.BLACK);
 			vBox.getChildren().add(border);
 			vBox.getChildren().add(rectangle);
 		}
-		hotel.setOnMouseClicked(event -> {
-			Parent root = null;
-			try {
-				root = FXMLLoader.load(getClass().getResource("NavHotel.fxml"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			stage.setScene(scene);
-			stage.setTitle("Hotel");
-			stage.show();
-		});
-		fli.setOnMouseClicked(event -> {
+		flight_l.setOnMouseClicked(event -> {
 			Parent root = null;
 			try {
 				root = FXMLLoader.load(getClass().getResource("NavFli.fxml"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			Scene scene = new Scene(root,1300,650);
+			Scene scene = new Scene(root,1300,700);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
 			stage.setTitle("Flights");
+			stage.show();
+		});
+		hotel_l.setOnMouseClicked(event -> {
+			Parent root = null;
+			try {
+				root = FXMLLoader.load(getClass().getResource("NavTrain.fxml"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(root,1300,700);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.setTitle("Trains");
 			stage.show();
 		});
 		scrollPane.setContent(vBox);
@@ -107,16 +110,16 @@ public class NavTrain implements Initializable {
 		{
 			HBox rectangle = new HBox();;
 			rectangle.setMinHeight(150);
-			rectangle.setMinWidth(1153);
+			rectangle.setMinWidth(1300);
 			rectangle.setBackground(new Background(new BackgroundFill(color,
 					CornerRadii.EMPTY, Insets.EMPTY)));
 			Label hotel_name = new Label();
 			Label hotel_review = new Label();
 			hotel_review.setMinHeight(75);
-			hotel_review.setText(Hotel.hotel_rating[i]+Hotel.no_of_re[i]);
+			hotel_review.setText(Hotel.hotel_rating[i]+"☆"+Hotel.no_of_re[i]);
 			hotel_name.setMinHeight(75);
 			hotel_name.setFont(Font.font ("Tahoma", 20));
-			hotel_name.setText(Hotel.hotel_name[i]);
+			hotel_name.setText(Hotel.hotel_name[i] +" (" + Hotel.dest[i] + ")");
 			rectangle.setOnMouseEntered(event -> {
 				rectangle.setBackground(new Background(new BackgroundFill(color1,
 					CornerRadii.EMPTY, Insets.EMPTY)));
@@ -152,15 +155,25 @@ public class NavTrain implements Initializable {
 			vBox1.getChildren().add(imageView);
 			vBox1.getChildren().add(rectH2);
 			VBox vBox = new VBox();
-			vBox.setMinWidth(1153);
+			vBox.setMinWidth(300);
 			vBox.setMinHeight(150);
 			vBox.setPadding(new Insets(0,0,0,10));
 			vBox.getChildren().add(hotel_name);
 			vBox.getChildren().add(hotel_review);
+			Button cart = new Button();
+			cart.setText("Add to Cart");
+			StackPane pane = new StackPane();
+			pane.setMinHeight(150);
+			pane.setMinWidth(300);
+			pane.setMaxHeight(150);
+			pane.setMaxWidth(300);
+			pane.getChildren().add(cart);
+			pane.setAlignment(cart, Pos.BOTTOM_RIGHT);
 			rectangle.getChildren().add(rectV1);
 			rectangle.getChildren().add(vBox1);
 			rectangle.getChildren().add(rectV2);
 			rectangle.getChildren().add(vBox);
+			rectangle.getChildren().add(pane);
 			rectangleList.add(rectangle);
 		}
 		return rectangleList;
