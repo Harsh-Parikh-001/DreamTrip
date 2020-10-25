@@ -7,9 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
+
 public class SplashScreenPreLoader extends Preloader
 {
-	private Stage preloaderStage;
+	private Stage preloaderStage, primaryStage;
 	private Scene scene;
 	@Override
 	public void init() throws Exception
@@ -41,12 +43,27 @@ public class SplashScreenPreLoader extends Preloader
 		switch (type)
 		{
 			case BEFORE_LOAD:
+				break;
 			case BEFORE_INIT:
 				break;
 			case BEFORE_START:
+				Parent root = null;
+				try
+				{
+					root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				primaryStage = new Stage();
+				primaryStage.setTitle("DreamTrip");
+				primaryStage.setScene(new Scene(root, 800, 700));
+				primaryStage.setMinWidth(800);
+				primaryStage.setMinHeight(700);
+				primaryStage.show();
 				preloaderStage.hide();
 				break;
-
 		}
 	}
 }

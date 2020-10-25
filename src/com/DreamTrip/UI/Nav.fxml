@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" minHeight="500" minWidth="700" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.NavHotel">
+<AnchorPane fx:id="anchorPane" minHeight="500" minWidth="700" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.Nav">
    <children>
       <HBox fx:id="hbox" alignment="CENTER_LEFT" style="-fx-background-color: #008080;" AnchorPane.bottomAnchor="450.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       </HBox>
@@ -26,6 +26,11 @@
                </font></Label>
             <Separator prefWidth="200.0" />
             <Label fx:id="train_id" minHeight="25.0" minWidth="68.0" text="Trains" textFill="#b5abab">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="cart_id" minHeight="25.0" minWidth="68.0" text="Cart" textFill="#b5abab">
                <font>
                   <Font size="15.0" />
                </font>

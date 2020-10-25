@@ -2,9 +2,6 @@ package com.DreamTrip.UI;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Preloader;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainScreen extends Application
@@ -13,12 +10,6 @@ public class MainScreen extends Application
 	@Override
 	public void start(Stage primaryStage) throws Exception
 	{
-		Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-		primaryStage.setTitle("DreamTrip");
-		primaryStage.setScene(new Scene(root, 800, 700));
-		primaryStage.setMinWidth(800);
-		primaryStage.setMaxHeight(700);
-		primaryStage.show();
 	}
 	@Override
 	public void init() throws Exception
