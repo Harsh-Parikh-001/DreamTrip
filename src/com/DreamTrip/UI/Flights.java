@@ -1,6 +1,7 @@
 package com.DreamTrip.UI;
 
-public class Flights {
+public class Flights
+{
 	public static int no = 9;
 	public static String[] hotel_name = new String[no];
 	public static String[] hotel_image = new String[no];
