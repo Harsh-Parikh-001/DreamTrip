@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="ap" style="-fx-background-color: #008080;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.HomeController">
+<AnchorPane id="ap" style="-fx-background-color: #008080;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.HomeController">
    <children>
       <Label alignment="CENTER" layoutX="134.0" layoutY="20.0" text="Welcome to DreamTrip" textAlignment="JUSTIFY" textFill="#f8f5f5" AnchorPane.leftAnchor="121.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="20.0">
          <font>
