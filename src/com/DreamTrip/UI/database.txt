@@ -1,0 +1,108 @@
+DROP DATABASE IF EXISTS dreamtrip;
+CREATE DATABASE IF NOT EXISTS dreamtrip;
+USE dreamtrip;
+
+CREATE TABLE IF NOT EXISTS customer 
+(
+  Customer_id bigint(100) auto_increment ,	
+  Cust_name varchar(35) DEFAULT NULL,
+  Contact varchar(12) DEFAULT NULL,
+  Email varchar(30) DEFAULT NULL,
+  Address varchar(50) DEFAULT NULL,
+  pass_word varchar(25) NOT NULL,
+  encrip_key varchar(255) NOT NULL,
+  PRIMARY KEY (Customer_id)
+);
+
+CREATE TABLE IF NOT EXISTS hotel
+(
+  Hotel_id varchar(7) DEFAULT NULL,
+  Location varchar(35) DEFAULT NULL,
+  Hotel_name varchar( 30) DEFAULT NULL,
+  Fare_per_night decimal(10,2) DEFAULT NULL,
+  Hotel_desc varchar(100) DEFAULT NULL,
+  Hotel_img varchar(100) DEFAULT NULL,
+  Rating decimal(2,1) DEFAULT NULL,
+  No_of_purchase int DEFAULT NULL,
+  Facilities varchar(15) DEFAULT NULL
+);
+
+INSERT INTO `hotel`
+VALUES
+  ('H00101', 'Berlin', 'Jade Mountain Hotel', 12722.00, 'Martin-Luther-Str.1', '../DreamTrip/src/com/DreamTrip/UI/hotel_1.png', 4.2, 79179, 'AC,WF,G,S,R'),
+  ('H00102', 'Hyderabad', 'Mandarin Oriental', 3300.00, 'NH 44 HT Lane Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_2.png', 4.5, 32280, 'AC,S,R'),
+  ('H00103', 'Tokyo', 'The Claridges Hotel', 9750.00, 'Shibuya 150-0042', '../DreamTrip/src/com/DreamTrip/UI/hotel_3.png', 4.9, 84842, 'AC,WF,G,S,R'),
+  ('H00104', 'Vadodara', 'Aadrika Hotel', 2368.00, 'Jetalpur Rd, Opp. Parsi Agyari', '../DreamTrip/src/com/DreamTrip/UI/hotel_4.png', 4.2, 51561, 'AC,WF'),
+  ('H00105', 'Kochi', 'Coast Hotels', 3625.00, 'Street Fort Kochi, Ernakulam', '../DreamTrip/src/com/DreamTrip/UI/hotel_5.png', 4.5, 22212, 'AC,WF,G'),
+  ('H00106', 'Surat', 'The Sebastian Hotel', 1693.00, 'Bamroli Althan Expressway', '../DreamTrip/src/com/DreamTrip/UI/hotel_6.png', 4.6, 26324, 'AC,WF,G,S,R'),
+  ('H00107', 'Mumbai', 'Roadside Motel', 2750.00, 'Nariman Point, Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_7.png', 4.8, 96253, 'AC,WF,G,S'),
+  ('H00108', 'Delhi', 'Roseate House', 3966.00, 'Barakhamba Avenue Connaught Place', '../DreamTrip/src/com/DreamTrip/UI/hotel_8.png', 4.4, 89697, 'AC,WF,G'),
+  ('H00109', 'Dubai', 'Candlewood Suites', 17294.00, 'Mina Rashid, Dubai', '../DreamTrip/src/com/DreamTrip/UI/hotel_9.png', 5.0, 35778, 'AC,WF,G,S,R'),
+  ('H00110', 'Chennai', 'Hilltop Heaven Hotel', 2145.00, '72, Sardar Patel Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_10.png', 4.2, 39446, 'AC,WF'),
+  ('H00111', 'Mumbai', 'Southern Hospitality', 3640.00, 'Sahar Airport Road, Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_11.png', 4.7, 61461, 'AC,WF,G,S'),
+  ('H00112', 'Kanpur', 'Eros Hotel', 1288.00, 'Moolganj Chouraha Halsey Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_12.png', 4.0, 1488, 'AC'),
+  ('H00113', 'Delhi', 'Royal Galaxy', 4590.00, 'National Highway 8', '../DreamTrip/src/com/DreamTrip/UI/hotel_13.png', 4.3, 51308, 'AC,WF'),
+  ('H00114', 'Mumbai', 'Paradise Point Hotel', 4000.00, '11 Madh Marve Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_14.png', 4.8, 25144, 'AC,WF,G,S');
+
+
+CREATE TABLE IF NOT EXISTS flight 
+(
+  Flight_number varchar(12) NOT NULL ,
+  Arrival_day varchar(12) DEFAULT NULL,
+  Airlines varchar(20) DEFAULT NULL,
+  Origin varchar(20) DEFAULT NULL,
+  Destination varchar(20) DEFAULT NULL,
+  Arrival_time varchar(5) DEFAULT NULL,
+  Departure_time varchar(5) DEFAULT NULL,
+  Fare decimal(7,2) DEFAULT NULL,
+  No_of_available_seats int DEFAULT NULL,
+  Flight_img varchar(255) ,
+  PRIMARY KEY (Flight_number)
+);
+
+INSERT INTO flight VALUES
+('BA 7326','Sunday','British Airways','Berlin','Mumbai','17:42','19:00',27000.00,17,'../DreamTrip/src/com/DreamTrip/UI/British-Airways.png'),
+('IN 7637','Wednesday','Indigo','Mumbai','Chennai','3:25','4:15',6000.00,8,'../DreamTrip/src/com/DreamTrip/UI/Indigo.png'),
+('JW 1422','Tuesday','Jet Airways','Delhi','Mumbai','09:15','10:45',7500.00,7,'../DreamTrip/src/com/DreamTrip/UI/Jet-Airways.png'),
+('JW 8831','Monday','Jet Airways','Mumbai','Delhi','20:12','21:30',7200.00,2,'../DreamTrip/src/com/DreamTrip/UI/Jet-Airways.png'),
+('JW 9834','Saturday','Jet Airways','Chennai','Mumbai','18:34','20:00',5000.00,5,'../DreamTrip/src/com/DreamTrip/UI/Jet-Airways.png'),
+('LU 1363','Sunday','Lufthansa','Mumbai','Berlin','19:54','22:00',26499.00,22,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
+('LU 2390','Saturday','Lufthansa','Tokyo','Hyderabad','21:55','23:45',21499.00,14,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
+('LU 6206','Thursday','Lufthansa','Hyderabad','Tokyo','12:00','13:30',23000.00,9,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
+('SA 7352','Friday','Singapore Airlines','Delhi','Dubai','15:45','18:00',13000.00,21,'../DreamTrip/src/com/DreamTrip/UI/singapore-airlines.png'),
+('SA 9876','Monday','Singapore Airlines','Dubai','Delhi','11:23','1:45',12000.00,12,'../DreamTrip/src/com/DreamTrip/UI/singapore-airlines.png');
+
+CREATE TABLE IF NOT EXISTS orders 
+(
+  Booking_id varchar(7) NOT NULL,
+  Origin varchar(20) DEFAULT NULL,
+  Destination varchar(20) DEFAULT NULL,
+  Flight_number varchar(12) DEFAULT NULL,
+  Hotel_id varchar(7) DEFAULT NULL,
+  Arrival_time varchar(5) DEFAULT NULL,
+  Departure_time varchar(5) DEFAULT NULL,
+  Total_fare decimal(10,2) DEFAULT NULL,
+  Customer_id varchar(7) DEFAULT NULL,
+  Cust_name varchar(35) DEFAULT NULL,
+  Contact varchar(12) DEFAULT NULL,
+  PRIMARY KEY (Booking_id)	
+);
+
+CREATE TABLE IF NOT EXISTS trains
+(
+  Train_id varchar(7) not NULL,
+  Origin varchar(20) DEFAULT NULL,
+  Destination varchar(20) DEFAULT NULL,
+  Arrival_day varchar(9) DEFAULT NULL,
+  Arrival_time varchar(5) DEFAULT NULL,
+  Seats_remaining int DEFAULT NULL,
+  Train_img varchar(255)
+);
+
+INSERT INTO `trains` VALUES
+('T00101','Mumbai','Surat','Monday','12:30',2,'../DreamTrip/src/com/DreamTrip/UI/Train_1'),
+('T00102','Surat','Mumbai','Sunday','15:45',3,'../DreamTrip/src/com/DreamTrip/UI/Train_2'),
+('T00103','Delhi','Kochi','Wednesday','09:25',20,'../DreamTrip/src/com/DreamTrip/UI/Train_3'),
+('T00104','Kochi','Delhi','Saturday','04:15',14,'../DreamTrip/src/com/DreamTrip/UI/Train_4'),
+('T00105','Kanpur','Vadodara','Friday','18:30',6,'../DreamTrip/src/com/DreamTrip/UI/Train_5'),
+('T00106','Vadodara','Kanpur','Sunday','22:15',16,'../DreamTrip/src/com/DreamTrip/UI/Train_6');
