@@ -1,5 +1,6 @@
 package com.DreamTrip.UI;
 
+import com.DreamTrip.Connectivity.ConnectionClass;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,8 +14,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginPage implements Initializable {
@@ -26,6 +29,9 @@ public class LoginPage implements Initializable {
 
 	@FXML
 	PasswordField psswd;
+
+	@FXML
+	Checkbox check1_cb;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
@@ -43,6 +49,13 @@ public class LoginPage implements Initializable {
 				catch (IOException e)
 				{
 					e.printStackTrace();
+				}
+				try {
+					ConnectionClass.getFlights();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (SQLException throwables) {
+					throwables.printStackTrace();
 				}
 				Scene scene = new Scene(root,1300,700);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -1,8 +1,11 @@
 package com.DreamTrip.UI;
+import com.DreamTrip.Connectivity.ConnectionClass;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Preloader;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class MainScreen extends Application
 {
@@ -21,7 +24,7 @@ public class MainScreen extends Application
 			Thread.sleep(400);
 		}
 	}
-	public static void main(String[] args)
+	public static void main(String[] args) throws SQLException, ClassNotFoundException
 	{
 		LauncherImpl.launchApplication(MainScreen.class, SplashScreenPreLoader.class, args);
 	}

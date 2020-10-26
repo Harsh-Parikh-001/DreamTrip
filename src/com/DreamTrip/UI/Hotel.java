@@ -9,7 +9,6 @@ public class Hotel
 	public static String[] no_of_re = new String[no];
 	public static String[] dest = new  String[no];
 	public static String[] descrip = new String[no];
-
 	Hotel()
 	{
 		for(int i=0; i<no; i++)

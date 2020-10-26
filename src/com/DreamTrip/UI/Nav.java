@@ -80,6 +80,7 @@ public class Nav implements Initializable {
 			scrollPane.setContent(createTrains());
 			flight_id.setText("Flights");
 			hotel_id.setText("Hotels");
+			cart_id.setText("Cart");
 		});
 		hotel_id.setOnMouseClicked(event -> {
 			hotel_id.setText("Hotels >");
@@ -89,11 +90,11 @@ public class Nav implements Initializable {
 			cart_id.setText("Cart");
 		});
 		cart_id.setOnMouseClicked(event -> {
-			hotel_id.setText("Hotels >");
+			hotel_id.setText("Hotels");
 			scrollPane.setContent(createCart());
 			flight_id.setText("Flights");
 			train_id.setText("Trains");
-			cart_id.setText("Cart");
+			cart_id.setText("Cart >");
 		});
 		scrollPane.setContent(vBox);
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
