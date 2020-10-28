@@ -50,12 +50,13 @@ public class LoginPage implements Initializable {
 				{
 					e.printStackTrace();
 				}
-				try {
+				try
+				{
 					ConnectionClass.getFlights();
-				} catch (ClassNotFoundException e) {
+				}
+				catch (ClassNotFoundException | SQLException e)
+				{
 					e.printStackTrace();
-				} catch (SQLException throwables) {
-					throwables.printStackTrace();
 				}
 				Scene scene = new Scene(root,1300,700);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
