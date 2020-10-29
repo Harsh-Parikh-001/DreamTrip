@@ -49,4 +49,23 @@ public class ConnectionClass
         }
         return (rst);
     }
+    public static ResultSet getHotelById() throws  SQLException
+    {
+        dbConnect();
+        String sql = "“SELECT * FROM HOTEL  hotel_id = “ + a";
+        PreparedStatement pstmt = dbcon.prepareStatement(sql); //javas built in class
+        ResultSet rst = pstmt.executeQuery();
+        ResultSetMetaData rsmd = rst.getMetaData();
+        while (rst.next())
+        {
+            for (int i = 1; i <= rsmd.getColumnCount(); i++)
+            {
+                if (i > 1) System.out.print(",  ");
+                String columnValue = rst.getString(i);
+                System.out.print(columnValue + " " + rsmd.getColumnName(i));
+            }
+            System.out.println("");
+        }
+        return (rst);
+    }
 }

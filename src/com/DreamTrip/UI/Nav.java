@@ -34,7 +34,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Nav implements Initializable {
+public class Nav implements Initializable
+{
+	static int hotelCounter = 0;
+	static int trainCounter = 0;
+	static int cartCounter = 0;
+	static int[] hotelIndexArray = new int[Hotel.no];
+	static int[] trainIndexArray = new int[Trains.no];
+	static int[] IndexArray = new int[Flights.no];
+
+
 	@FXML
 	ScrollPane scrollPane;
 
@@ -52,6 +61,8 @@ public class Nav implements Initializable {
 
 	@FXML
 	Label cart_id;
+
+
 
 	Color color1 = Color.web("#A9A9A9");
 	Color color = Color.web("#D3D3D3");
@@ -150,7 +161,8 @@ public class Nav implements Initializable {
 			InputStream stream = null;
 			try {
 				stream = new FileInputStream(Hotel.hotel_image[i]);
-			} catch (FileNotFoundException e) {
+			} catch (FileNotFoundException e)
+			{
 				e.printStackTrace();
 				System.out.println(e);
 			}
@@ -179,6 +191,12 @@ public class Nav implements Initializable {
 			vBox.getChildren().add(hotel_review);
 			Button cart = new Button();
 			cart.setText("Add to Cart");
+			int indexToBeAdded = i;
+			cart.setOnMouseClicked(event ->
+			{
+				hotelIndexArray[hotelCounter] = indexToBeAdded;
+						hotelCounter += 1;
+			});
 			StackPane pane = new StackPane();
 			pane.setMinHeight(150);
 			pane.setMinWidth(300);
@@ -210,7 +228,7 @@ public class Nav implements Initializable {
 
 	private List<HBox> createClickableFlights() {
 		List<HBox> rectangleList = new ArrayList<>();
-		Flights flights = new Flights();
+		new Flights();
 		for (int i = 0; i < Flights.no; i++) {
 			HBox rectangle = new HBox();
 			;
