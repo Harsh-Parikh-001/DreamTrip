@@ -140,6 +140,7 @@ class Sprites {
 			rectangle.getChildren().add(pane);
 			rectangle.setAccessibleText(Hotel.hotel_id[i]);
 			int finalI = i;
+			int finalI1 = i;
 			rectangle.setOnMouseClicked(event -> {
 				HotelUI.hotel = Hotel.hotel_id[finalI];
 				Parent root = null;
@@ -162,7 +163,7 @@ class Sprites {
 				Scene scene = new Scene(root,1300,700);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 				stage.setScene(scene);
-				stage.setTitle("Hotel");
+				stage.setTitle(Hotel.hotel_name[finalI1]);
 				stage.setMinWidth(1000);
 				stage.setMinHeight(700);
 				stage.show();
@@ -304,7 +305,6 @@ class Sprites {
 		Trains trains = new Trains();
 		for (int i = 0; i < 18; i++) {
 			HBox rectangle = new HBox();
-			;
 			rectangle.setMinHeight(150);
 			rectangle.setMinWidth(1300);
 			rectangle.setBackground(new Background(new BackgroundFill(color,
@@ -439,11 +439,11 @@ class Sprites {
 			o_no_of_days.setMinHeight(50);
 			total_payment.setMinHeight(50);
 			rooms.setMinHeight(50);
-			rectangle.setSpacing(20);
-			o_hotel_name.setText(OrderedHotels.hotel_id[u]);
-			o_no_of_days.setText(OrderedHotels.no_of_days[u]);
-			total_payment.setText(OrderedHotels.total_payment[u]);
-			rooms.setText(OrderedHotels.room_no[u]);
+			rectangle.setSpacing(200);
+			o_hotel_name.setText("Hotel ID: " + OrderedHotels.hotel_id[u]);
+			o_no_of_days.setText("No. Of Days: " + OrderedHotels.no_of_days[u]);
+			total_payment.setText("Billed Amount: "+ OrderedHotels.total_payment[u]);
+			rooms.setText("Room No.: "+OrderedHotels.room_no[u]);
 			rectangle.getChildren().add(o_hotel_name);
 			rectangle.getChildren().add(o_no_of_days);
 			rectangle.getChildren().add(rooms);

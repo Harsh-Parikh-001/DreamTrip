@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -17,6 +18,9 @@
          <children>
             <ImageView fitWidth="200.0" preserveRatio="true">
                <Image url="@Logo.jpg" />
+               <VBox.margin>
+                  <Insets right="2.0" top="5.0" />
+               </VBox.margin>
             </ImageView>
             <Label fx:id="past_orders_lbl" maxHeight="25.0" maxWidth="106.0" minHeight="25.0" prefHeight="25.0" prefWidth="86.0" text="Past Orders" textFill="#b5b4b4">
                <font>

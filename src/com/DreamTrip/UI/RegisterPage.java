@@ -130,9 +130,6 @@ public class RegisterPage implements Initializable
 				navigation_bt.setDisable(false);
 			}
 		}
-
-
-
 		Parent root = null;
 		try
 		{

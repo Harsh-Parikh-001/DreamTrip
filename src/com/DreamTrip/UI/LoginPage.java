@@ -10,21 +10,18 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class LoginPage implements Initializable {
+public class LoginPage implements Initializable
+{
 	@FXML
 	Button navigation_bt;
 
@@ -32,10 +29,13 @@ public class LoginPage implements Initializable {
 	TextField email_tf;
 
 	@FXML
+	TextField txt_psswd;
+
+	@FXML
 	PasswordField psswd;
 
 	@FXML
-	Checkbox check1_cb;
+	CheckBox show_psswd;
 
 	static ResultSet rs;
 	static String customer;
@@ -82,6 +82,27 @@ public class LoginPage implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		txt_psswd.setManaged(false);
+		txt_psswd.setVisible(false);
+		psswd.textProperty().bindBidirectional(txt_psswd.textProperty());
+		show_psswd.selectedProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue)
+			{
+				psswd.setVisible(false);
+				psswd.setManaged(false);
+				txt_psswd.setVisible(true);
+				txt_psswd.setManaged(true);
+				show_psswd.setText("Hide Password");
+			}
+			else
+			{
+				txt_psswd.setVisible(false);
+				txt_psswd.setManaged(false);
+				psswd.setVisible(true);
+				psswd.setManaged(true);
+				show_psswd.setText("Show Password");
+			}
+		});
 		navigation_bt.setOnAction(new EventHandler<ActionEvent>()
 		{
 			@Override

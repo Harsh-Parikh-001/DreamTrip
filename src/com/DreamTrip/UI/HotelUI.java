@@ -11,19 +11,16 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -83,7 +80,7 @@ public class HotelUI implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		back_l.setUnderline(true);
+		back_l.setPadding(new Insets(0,0,0,20));
 		back_l.setOnMouseClicked(event -> {
 			Parent root = null;
 			try
@@ -105,7 +102,7 @@ public class HotelUI implements Initializable {
 			Scene scene = new Scene(root,1300,700);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
-			stage.setTitle("Hotels");
+			stage.setTitle("DreamTrip Navigator");
 			stage.show();
 		});
 		try {
@@ -179,11 +176,11 @@ public class HotelUI implements Initializable {
 			{
 				throwables.printStackTrace();
 			}
-			Scene scene = new Scene(root,800,600);
+			Scene scene = new Scene(root,1300,600);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.setTitle("Hotels");
+			stage.setResizable(true);
+			stage.setTitle("Bill for Hotel");
 			stage.show();
 
 		});
@@ -209,11 +206,19 @@ public class HotelUI implements Initializable {
 		TextField tf = new TextField();
 		tf.setOnMouseExited(event -> {
 			String st = tf.getText();
-			if (st != null && Integer.parseInt(st)<=60 && Integer.parseInt(st)>0) {
-				int re = Integer.parseInt(st);
-				noOfDays = re;
-				finalPayment = Float.parseFloat(hotel_price)*re*ty;
-				payment.setText("Rs "+ Float.parseFloat(hotel_price)*re*ty);
+			try
+			{
+				if (st != null && Integer.parseInt(st)<=60 && Integer.parseInt(st)>0)
+				{
+					int re = Integer.parseInt(st);
+					noOfDays = re;
+					finalPayment = Float.parseFloat(hotel_price)*re*ty;
+					payment.setText("Rs "+ Float.parseFloat(hotel_price)*re*ty);
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
 			}
 		});
 		tf.setPrefWidth(300);
@@ -253,13 +258,11 @@ public class HotelUI implements Initializable {
 		tf.setMinHeight(30);
 		spc.getChildren().add(l13);
 		spc.getChildren().add(tf);
-		spc.setPadding(new Insets(10,0,0,0));
 		c.setPadding(new Insets(0,0,0,10));
 		c.setMinHeight(20);
 		l12.setPadding(new Insets(0,10,0,0));
 		l12.setMinHeight(20);
 		spc1.getChildren().add(l12);
 		spc1.getChildren().add(c);
-		spc1.setPadding(new Insets(0,0,0,0));
 	}
 }
