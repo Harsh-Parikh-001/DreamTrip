@@ -102,7 +102,6 @@ public class RegisterPage implements Initializable
 	}
 
 	private void handle(MouseEvent event) throws SQLException {
-		ConnectionClass.insertCustomer("Harsh", "9768167131","hamo30401@gmail.com", "ABCD", "asdf1234@","asdf1234@");
 		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
 		Pattern pat = Pattern.compile(emailRegex);
 		navigation_bt.setDisable(false);
@@ -151,7 +150,7 @@ public class RegisterPage implements Initializable
 			{
 				throwables.printStackTrace();
 			}
-			root = FXMLLoader.load(getClass().getResource("Nav.fxml"));
+			root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 		}
 		catch (IOException e)
 		{

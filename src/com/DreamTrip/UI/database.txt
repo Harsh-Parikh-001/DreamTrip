@@ -2,9 +2,9 @@ DROP DATABASE IF EXISTS dreamtrip;
 CREATE DATABASE IF NOT EXISTS dreamtrip;
 USE dreamtrip;
 
-CREATE TABLE IF NOT EXISTS customer 
+CREATE TABLE IF NOT EXISTS customer
 (
-  Customer_id bigint(100) auto_increment ,	
+  Customer_id bigint(100) auto_increment ,
   Cust_name varchar(35) DEFAULT NULL,
   Contact varchar(12) DEFAULT NULL,
   Email varchar(30) DEFAULT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS customer
 
 CREATE TABLE IF NOT EXISTS hotel
 (
-  Hotel_id varchar(7) DEFAULT NULL,
+  Hotel_id varchar(7) Not NULL primary key,
   Location varchar(35) DEFAULT NULL,
   Hotel_name varchar( 30) DEFAULT NULL,
   Fare_per_night decimal(10,2) DEFAULT NULL,
@@ -24,30 +24,39 @@ CREATE TABLE IF NOT EXISTS hotel
   Hotel_img varchar(100) DEFAULT NULL,
   Rating decimal(2,1) DEFAULT NULL,
   No_of_purchase int DEFAULT NULL,
-  Facilities varchar(15) DEFAULT NULL
+  Facilities varchar(15) DEFAULT NULL,
+  no_of_room numeric
 );
 
 INSERT INTO `hotel`
 VALUES
-  ('H00101', 'Berlin', 'Jade Mountain Hotel', 12722.00, 'Martin-Luther-Str.1', '../DreamTrip/src/com/DreamTrip/UI/hotel_1.png', 4.2, 79179, 'AC,WF,G,S,R'),
-  ('H00102', 'Hyderabad', 'Mandarin Oriental', 3300.00, 'NH 44 HT Lane Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_2.png', 4.5, 32280, 'AC,S,R'),
-  ('H00103', 'Tokyo', 'The Claridges Hotel', 9750.00, 'Shibuya 150-0042', '../DreamTrip/src/com/DreamTrip/UI/hotel_3.png', 4.9, 84842, 'AC,WF,G,S,R'),
-  ('H00104', 'Vadodara', 'Aadrika Hotel', 2368.00, 'Jetalpur Rd, Opp. Parsi Agyari', '../DreamTrip/src/com/DreamTrip/UI/hotel_4.png', 4.2, 51561, 'AC,WF'),
-  ('H00105', 'Kochi', 'Coast Hotels', 3625.00, 'Street Fort Kochi, Ernakulam', '../DreamTrip/src/com/DreamTrip/UI/hotel_5.png', 4.5, 22212, 'AC,WF,G'),
-  ('H00106', 'Surat', 'The Sebastian Hotel', 1693.00, 'Bamroli Althan Expressway', '../DreamTrip/src/com/DreamTrip/UI/hotel_6.png', 4.6, 26324, 'AC,WF,G,S,R'),
-  ('H00107', 'Mumbai', 'Roadside Motel', 2750.00, 'Nariman Point, Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_7.png', 4.8, 96253, 'AC,WF,G,S'),
-  ('H00108', 'Delhi', 'Roseate House', 3966.00, 'Barakhamba Avenue Connaught Place', '../DreamTrip/src/com/DreamTrip/UI/hotel_8.png', 4.4, 89697, 'AC,WF,G'),
-  ('H00109', 'Dubai', 'Candlewood Suites', 17294.00, 'Mina Rashid, Dubai', '../DreamTrip/src/com/DreamTrip/UI/hotel_9.png', 5.0, 35778, 'AC,WF,G,S,R'),
-  ('H00110', 'Chennai', 'Hilltop Heaven Hotel', 2145.00, '72, Sardar Patel Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_10.png', 4.2, 39446, 'AC,WF'),
-  ('H00111', 'Mumbai', 'Southern Hospitality', 3640.00, 'Sahar Airport Road, Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_11.png', 4.7, 61461, 'AC,WF,G,S'),
-  ('H00112', 'Kanpur', 'Eros Hotel', 1288.00, 'Moolganj Chouraha Halsey Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_12.png', 4.0, 1488, 'AC'),
-  ('H00113', 'Delhi', 'Royal Galaxy', 4590.00, 'National Highway 8', '../DreamTrip/src/com/DreamTrip/UI/hotel_13.png', 4.3, 51308, 'AC,WF'),
-  ('H00114', 'Mumbai', 'Paradise Point Hotel', 4000.00, '11 Madh Marve Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_14.png', 4.8, 25144, 'AC,WF,G,S');
+  ('H00101', 'Berlin', 'Jade Mountain Hotel', 12722.00, 'Martin-Luther-Str.1', '../DreamTrip/src/com/DreamTrip/UI/hotel_1.png', 4.2, 79179, 'AC,WF,G,S,R', 4),
+  ('H00102', 'Hyderabad', 'Mandarin Oriental', 3300.00, 'NH 44 HT Lane Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_2.png', 4.5, 32280, 'AC,S,R', 2),
+  ('H00103', 'Tokyo', 'The Claridges Hotel', 9750.00, 'Shibuya 150-0042', '../DreamTrip/src/com/DreamTrip/UI/hotel_3.png', 4.9, 84842, 'AC,WF,G,S,R', 3),
+  ('H00104', 'Vadodara', 'Aadrika Hotel', 2368.00, 'Jetalpur Rd, Opp. Parsi Agyari', '../DreamTrip/src/com/DreamTrip/UI/hotel_4.png', 4.2, 51561, 'AC,WF', 3),
+  ('H00105', 'Kochi', 'Coast Hotels', 3625.00, 'Street Fort Kochi, Ernakulam', '../DreamTrip/src/com/DreamTrip/UI/hotel_5.png', 4.5, 22212, 'AC,WF,G',5),
+  ('H00106', 'Surat', 'The Sebastian Hotel', 1693.00, 'Bamroli Althan Expressway', '../DreamTrip/src/com/DreamTrip/UI/hotel_6.png', 4.6, 26324, 'AC,WF,G,S,R', 6),
+  ('H00107', 'Mumbai', 'Roadside Motel', 2750.00, 'Nariman Point, Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_7.png', 4.8, 96253, 'AC,WF,G,S', 4),
+  ('H00108', 'Delhi', 'Roseate House', 3966.00, 'Barakhamba Avenue Connaught Place', '../DreamTrip/src/com/DreamTrip/UI/hotel_8.png', 4.4, 89697, 'AC,WF,G', 3),
+  ('H00109', 'Dubai', 'Candlewood Suites', 17294.00, 'Mina Rashid, Dubai', '../DreamTrip/src/com/DreamTrip/UI/hotel_9.png', 5.0, 35778, 'AC,WF,G,S,R', 4),
+  ('H00110', 'Chennai', 'Hilltop Heaven Hotel', 2145.00, '72, Sardar Patel Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_10.png', 4.2, 39446, 'AC,WF', 3),
+  ('H00111', 'Mumbai', 'Southern Hospitality', 3640.00, 'Sahar Airport Road, Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_11.png', 4.7, 61461, 'AC,WF,G,S', 2),
+  ('H00112', 'Kanpur', 'Eros Hotel', 1288.00, 'Moolganj Chouraha Halsey Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_12.png', 4.0, 1488, 'AC', 3),
+  ('H00113', 'Delhi', 'Royal Galaxy', 4590.00, 'National Highway 8', '../DreamTrip/src/com/DreamTrip/UI/hotel_13.png', 4.3, 51308, 'AC,WF', 4),
+  ('H00114', 'Mumbai', 'Paradise Point Hotel', 4000.00, '11 Madh Marve Road', '../DreamTrip/src/com/DreamTrip/UI/hotel_14.png', 4.8, 25144, 'AC,WF,G,S', 4),
+  ('H00115', 'Delhi', 'The Residencies', 3500.00, 'Vishal Nagar, Behram Baug, Delhi', '../DreamTrip/src/com/DreamTrip/UI/hotel_8.png', 4.4, 89697, 'AC,WF,G', 2),
+  ('H00116', 'Dubai', 'Le Royal Meridien', 19000.00, '520 7th St Harlan, Dubai', '../DreamTrip/src/com/DreamTrip/UI/hotel_9.png', 5.0, 35778, 'AC,WF,G,S,R', 5),
+  ('H00117', 'Chennai', 'Lakeside Chalet', 2200.00, '17, Chira Bazaar,Chennai', '../DreamTrip/src/com/DreamTrip/UI/hotel_10.png', 4.2, 39446, 'AC,WF',3),
+  ('H00118', 'Mumbai', 'Cenataur Hotel', 3800.00, 'L-4, Crystal Plaza, Link Road, Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_11.png', 4.7, 61461, 'AC,WF,G,S', 4),
+  ('H00119', 'Kanpur', 'Rambhagh Palace', 1450.00, 'Shiv Shakti Nagar,Kanpur', '../DreamTrip/src/com/DreamTrip/UI/hotel_12.png', 4.0, 1488, 'AC', 3),
+  ('H00120', 'Delhi', 'Delhi Inn', 4700.00, 'Plot no.11 Near Ananad Mangal,Delhi', '../DreamTrip/src/com/DreamTrip/UI/hotel_13.png', 4.3, 51308, 'AC,WF', 2),
+  ('H00121', 'Mumbai', 'Paradise Point Hotel', 4000.00, '34-A Dabolkar Wadi,Mumbai', '../DreamTrip/src/com/DreamTrip/UI/hotel_14.png', 4.8, 25144, 'AC,WF,G,S', 2);
 
 
-CREATE TABLE IF NOT EXISTS flight 
+
+CREATE TABLE IF NOT EXISTS flight
 (
-  Flight_number varchar(12) NOT NULL ,
+  Flight_number varchar(12) NOT NULL primary key,
   Arrival_day varchar(12) DEFAULT NULL,
   Airlines varchar(20) DEFAULT NULL,
   Origin varchar(20) DEFAULT NULL,
@@ -56,8 +65,7 @@ CREATE TABLE IF NOT EXISTS flight
   Departure_time varchar(5) DEFAULT NULL,
   Fare decimal(7,2) DEFAULT NULL,
   No_of_available_seats int DEFAULT NULL,
-  Flight_img varchar(255) ,
-  PRIMARY KEY (Flight_number)
+  Flight_img varchar(255)
 );
 
 INSERT INTO flight VALUES
@@ -70,39 +78,141 @@ INSERT INTO flight VALUES
 ('LU 2390','Saturday','Lufthansa','Tokyo','Hyderabad','21:55','23:45',21499.00,14,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
 ('LU 6206','Thursday','Lufthansa','Hyderabad','Tokyo','12:00','13:30',23000.00,9,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
 ('SA 7352','Friday','Singapore Airlines','Delhi','Dubai','15:45','18:00',13000.00,21,'../DreamTrip/src/com/DreamTrip/UI/singapore-airlines.png'),
-('SA 9876','Monday','Singapore Airlines','Dubai','Delhi','11:23','1:45',12000.00,12,'../DreamTrip/src/com/DreamTrip/UI/singapore-airlines.png');
-
-CREATE TABLE IF NOT EXISTS orders 
-(
-  Booking_id varchar(7) NOT NULL,
-  Origin varchar(20) DEFAULT NULL,
-  Destination varchar(20) DEFAULT NULL,
-  Flight_number varchar(12) DEFAULT NULL,
-  Hotel_id varchar(7) DEFAULT NULL,
-  Arrival_time varchar(5) DEFAULT NULL,
-  Departure_time varchar(5) DEFAULT NULL,
-  Total_fare decimal(10,2) DEFAULT NULL,
-  Customer_id varchar(7) DEFAULT NULL,
-  Cust_name varchar(35) DEFAULT NULL,
-  Contact varchar(12) DEFAULT NULL,
-  PRIMARY KEY (Booking_id)	
-);
+('SA 9876','Monday','Singapore Airlines','Dubai','Delhi','11:23','1:45',12000.00,12,'../DreamTrip/src/com/DreamTrip/UI/singapore-airlines.png'),
+('BA 2476','Thursday','British Airways','Berlin','Mumbai','07:20','08:00',25500.00,17,'../DreamTrip/src/com/DreamTrip/UI/British-Airways.png'),
+('IN 1455','Monday','Indigo','Mumbai','Chennai','14:25','14:45',7700.00,8,'../DreamTrip/src/com/DreamTrip/UI/Indigo.png'),
+('JW 4123','Tuesday','Jet Airways','Chennai','Mumbai','19:34','20:00',3500.00,5,'../DreamTrip/src/com/DreamTrip/UI/Jet-Airways.png'),
+('LU 1361','Friday','Lufthansa','Mumbai','Berlin','19:54','22:00',22499.00,22,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
+('LU 2384','Saturday','Lufthansa','Tokyo','Hyderabad','21:55','23:45',18499.00,14,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
+('LU 6746','Saturday','Lufthansa','Hyderabad','Tokyo','19:55','21:30',23000.00,9,'../DreamTrip/src/com/DreamTrip/UI/lufthansa_logo.png'),
+('SA 4981','Friday','Singapore Airlines','Delhi','Dubai','01:45','02:20',14500.00,21,'../DreamTrip/src/com/DreamTrip/UI/singapore-airlines.png'),
+('SA 0896','Wednesday','Singapore Airlines','Dubai','Delhi','19:23','19:55',15000.00,12,'../DreamTrip/src/com/DreamTrip/UI/singapore-airlines.png');
 
 CREATE TABLE IF NOT EXISTS trains
 (
-  Train_id varchar(7) not NULL,
+  Train_id varchar(7) not NULL primary key,
   Origin varchar(20) DEFAULT NULL,
   Destination varchar(20) DEFAULT NULL,
   Arrival_day varchar(9) DEFAULT NULL,
   Arrival_time varchar(5) DEFAULT NULL,
   Seats_remaining int DEFAULT NULL,
-  Train_img varchar(255)
+  Train_img varchar(255),
+  Fare decimal(7,2) DEFAULT NULL
 );
 
 INSERT INTO `trains` VALUES
-('T00101','Mumbai','Surat','Monday','12:30',2,'../DreamTrip/src/com/DreamTrip/UI/Train_1'),
-('T00102','Surat','Mumbai','Sunday','15:45',3,'../DreamTrip/src/com/DreamTrip/UI/Train_2'),
-('T00103','Delhi','Kochi','Wednesday','09:25',20,'../DreamTrip/src/com/DreamTrip/UI/Train_3'),
-('T00104','Kochi','Delhi','Saturday','04:15',14,'../DreamTrip/src/com/DreamTrip/UI/Train_4'),
-('T00105','Kanpur','Vadodara','Friday','18:30',6,'../DreamTrip/src/com/DreamTrip/UI/Train_5'),
-('T00106','Vadodara','Kanpur','Sunday','22:15',16,'../DreamTrip/src/com/DreamTrip/UI/Train_6');
+('T00101','Mumbai','Surat','Monday','12:30',2,'../DreamTrip/src/com/DreamTrip/UI/Train_1.jpeg',1100),
+('T00102','Surat','Mumbai','Sunday','15:45',3,'../DreamTrip/src/com/DreamTrip/UI/Train_2.jpeg',580),
+('T00103','Delhi','Kochi','Wednesday','09:25',20,'../DreamTrip/src/com/DreamTrip/UI/Train_3.jpeg',1570),
+('T00104','Kochi','Delhi','Saturday','04:15',14,'../DreamTrip/src/com/DreamTrip/UI/Train_4.jpeg',1600),
+('T00105','Kanpur','Vadodara','Friday','18:30',6,'../DreamTrip/src/com/DreamTrip/UI/Train_5.jpeg',1700),
+('T00106','Vadodara','Kanpur','Sunday','22:15',16,'../DreamTrip/src/com/DreamTrip/UI/Train_6.jpeg',1650),
+('T00107','Delhi','Surat','Monday','12:30',2,'../DreamTrip/src/com/DreamTrip/UI/Train_1.jpeg',1369),
+('T00108','Surat','Delhi','Sunday','15:45',3,'../DreamTrip/src/com/DreamTrip/UI/Train_4.jpeg',1425),
+('T00109','Vadodara','Kochi','Wednesday','09:25',20,'../DreamTrip/src/com/DreamTrip/UI/Train_3.jpeg',800),
+('T00110','Kochi','Vadodara','Saturday','04:15',14,'../DreamTrip/src/com/DreamTrip/UI/Train_5.jpeg',880),
+('T00111','Delhi','Vadodara','Friday','18:30',6,'../DreamTrip/src/com/DreamTrip/UI/Train_5.jpeg',902),
+('T00112','Vadodara','Delhi','Sunday','22:15',16,'../DreamTrip/src/com/DreamTrip/UI/Train_4.jpeg',915),
+('T00113','Kochi','Surat','Monday','12:30',2,'../DreamTrip/src/com/DreamTrip/UI/Train_1.jpeg',900),
+('T00114','Surat','Kochi','Sunday','15:45',3,'../DreamTrip/src/com/DreamTrip/UI/Train_3.jpeg',850),
+('T00115','Mumbai','Kochi','Wednesday','09:25',20,'../DreamTrip/src/com/DreamTrip/UI/Train_3.jpeg',680),
+('T00116','Kochi','Mumbai','Saturday','04:15',14,'../DreamTrip/src/com/DreamTrip/UI/Train_2.jpeg',745),
+('T00117','Kanpur','Mumbai','Friday','18:30',6,'../DreamTrip/src/com/DreamTrip/UI/Train_2.jpeg',1590),
+('T00118','Mumbai','Kanpur','Sunday','22:15',16,'../DreamTrip/src/com/DreamTrip/UI/Train_6.jpeg',1480),
+('T00119','Vadodara','Surat','Monday','12:30',2,'../DreamTrip/src/com/DreamTrip/UI/Train_1.jpeg',380),
+('T00120','Vadodara','Mumbai','Sunday','15:45',3,'../DreamTrip/src/com/DreamTrip/UI/Train_2.jpeg',442),
+('T00121','Delhi','Mumbai','Wednesday','09:25',20,'../DreamTrip/src/com/DreamTrip/UI/Train_3.jpeg',443);
+
+CREATE TABLE IF NOT EXISTS avail_hotel
+(
+    hotel_id varchar(7),
+    room_no varchar(6),
+    type varchar(20)
+);
+
+insert into avail_hotel values
+('H00101','A101','Single'),
+('H00101','A102','Single'),
+('H00101','A103','Single'),
+('H00101','B204','Double'),
+('H00102','A001','Single'),
+('H00102','A002','Single'),
+('H00103','A103','Double'),
+('H00103','A107','Double'),
+('H00103','A109','Double'),
+('H00104','A105','Single'),
+('H00104','A108','Double'),
+('H00104','A110','Single'),
+('H00105','A101','Single'),
+('H00105','A104','Double'),
+('H00105','A103','Double'),
+('H00105','A106','Single'),
+('H00105','A109','Single'),
+('H00106','A104','Single'),
+('H00106','A107','Single'),
+('H00106','A102','Single'),
+('H00106','A108','Double'),
+('H00106','A102','Single'),
+('H00106','A110','Double'),
+('H00107','A101','Single'),
+('H00107','A103','Single'),
+('H00107','A106','Single'),
+('H00107','A118','Double'),
+('H00108','A101','Single'),
+('H00108','A103','Single'),
+('H00108','A108','Single'),
+('H00109','A101','Single'),
+('H00109','A102','Single'),
+('H00109','A104','Single'),
+('H00109','A107','Double'),
+('H00110','A101','Single'),
+('H00110','A103','Double'),
+('H00110','A106','Single'),
+('H00111','A101','Single'),
+('H00111','C106','Double'),
+('H00112','A101','Single'),
+('H00112','A101','Single'),
+('H00112','A101','Single'),
+('H00113','A101','Single'),
+('H00113','A105','Single'),
+('H00113','D101','Double'),
+('H00113','A105','Single'),
+('H00114','A101','Single'),
+('H00114','C101','Single'),
+('H00114','F101','Double'),
+('H00114','E101','Double'),
+('H00115','A101','Single'),
+('H00115','A106','Single'),
+('H00116','A101','Double'),
+('H00116','A102','Double'),
+('H00116','A103','Double'),
+('H00116','B101','Single'),
+('H00116','B102','Single'),
+('H00117','A101','Single'),
+('H00117','A102','Single'),
+('H00117','A104','Single'),
+('H00118','A101','Double'),
+('H00118','A102','Double'),
+('H00118','A103','Double'),
+('H00118','A104','Double'),
+('H00119','B101','Single'),
+('H00119','B103','Double'),
+('H00119','B106','Double'),
+('H00120','B101','Double'),
+('H00120','B103','Double'),
+('H00121','B106','Double'),
+('H00121','B108','Double');
+
+CREATE TABLE IF NOT EXISTS hotel_order
+(
+   customer_id bigint(100),
+   hotel_id varchar(7),
+   no_of_days numeric(10),
+   room_no varchar(10),
+   price decimal(10,2)
+);
+
+INSERT INTO customer( ,'Harsh Mody', '9768167131', 'hamo30401@gmail.com', 'Mumbai', 'asdf1234@');
+
+
+
