@@ -83,6 +83,7 @@ public class HotelUI implements Initializable {
 		back_l.setPadding(new Insets(0,0,0,20));
 		back_l.setOnMouseClicked(event -> {
 			Parent root = null;
+			Nav.cond = 1;
 			try
 			{
 				root = FXMLLoader.load(getClass().getResource("Nav.fxml"));
@@ -139,7 +140,6 @@ public class HotelUI implements Initializable {
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}
-		System.out.println(hotel_image);
 		InputStream stream = null;
 		try {
 			stream = new FileInputStream(hotel_image);
@@ -197,17 +197,18 @@ public class HotelUI implements Initializable {
 		desc.setFont(Font.font(20));
 		Fac.setText("Facilities Provided\n" + faci+"\n");
 		Fac.setFont(Font.font(20));
-		Label l12 = new Label();
-		l12.setText("Enter the Number of Days: ");
-		l12.setFont(Font.font(20));
 		Label l13 = new Label();
-		l13.setText("Choose the Room No: ");
+		l13.setText("Enter the Number of Days: ");
 		l13.setFont(Font.font(20));
+		Label l12 = new Label();
+		l12.setText("Choose the Room No: ");
+		l12.setFont(Font.font(20));
 		TextField tf = new TextField();
 		tf.setOnMouseExited(event -> {
 			String st = tf.getText();
 			try
 			{
+				assert st != null;
 				if (st != null && Integer.parseInt(st)<=60 && Integer.parseInt(st)>0)
 				{
 					int re = Integer.parseInt(st);

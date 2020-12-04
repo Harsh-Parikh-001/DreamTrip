@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" minHeight="448.0" minWidth="700" prefHeight="448.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.Nav">
+<AnchorPane fx:id="anchorPane" minHeight="448.0" minWidth="700" prefHeight="448.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.Nav">
    <children>
       <HBox fx:id="hbox" alignment="CENTER_LEFT" style="-fx-background-color: #008080;" AnchorPane.bottomAnchor="450.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <VBox alignment="TOP_CENTER" maxWidth="217.0" prefHeight="500.0" prefWidth="209.0" style="-fx-background-color: #008080;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -22,6 +22,12 @@
                   <Insets right="2.0" top="5.0" />
                </VBox.margin>
             </ImageView>
+            <Label fx:id="user_name_lbl" maxHeight="66.0" maxWidth="187.0" minHeight="25.0" prefHeight="66.0" prefWidth="187.0" textAlignment="CENTER" textFill="#b5b4b4">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0" />
             <Label fx:id="past_orders_lbl" maxHeight="25.0" maxWidth="106.0" minHeight="25.0" prefHeight="25.0" prefWidth="86.0" text="Past Orders" textFill="#b5b4b4">
                <font>
                   <Font size="15.0" />

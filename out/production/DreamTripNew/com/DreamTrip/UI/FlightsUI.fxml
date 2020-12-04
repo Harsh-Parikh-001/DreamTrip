@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" minHeight="500" minWidth="700.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.FlightsUI">
+    <children>
+        <HBox fx:id="hbox" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #008080;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="back_l" prefHeight="50.0" prefWidth="144.0" text="&lt; Back" textFill="#fffafa">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="270.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="184.0" prefWidth="700.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <HBox fx:id="spc" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                            <VBox.margin>
+                                <Insets right="30.0" top="30.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="670.0">
+                            <children>
+                                <Label text="Amount To Be Payed">
+                                    <HBox.margin>
+                                        <Insets right="20.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="payment" minWidth="200.0">
+                                    <HBox.margin>
+                                        <Insets left="20.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets right="30.0" top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <Label fx:id="pay_bt" text="Pay">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="20.0" top="30.0" />
+                            </VBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="30.0" />
+                    </padding>
+                    <HBox.margin>
+                        <Insets top="40.0" />
+                    </HBox.margin>
+                </VBox>
+            </children>
+        </HBox>
+        <HBox fx:id="hbox1" alignment="CENTER_LEFT" layoutY="50.0" prefHeight="230.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <children>
+                <StackPane fx:id="sp" prefHeight="225.0" prefWidth="250.0" HBox.hgrow="SOMETIMES">
+                    <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                    </HBox.margin>
+                </StackPane>
+                <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="name_of_flight" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label fx:id="desc">
+                                    <HBox.margin>
+                                        <Insets right="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Label fx:id="Fac">
+                                    <HBox.margin>
+                                        <Insets left="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="40.0" top="10.0" />
+                    </HBox.margin>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

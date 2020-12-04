@@ -7,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,10 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import sun.plugin2.ipc.Event;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Sprites {
+
 	static Color color1 = Color.web("#A9A9A9");
 	static Color color = Color.web("#D3D3D3");
 
@@ -138,7 +135,6 @@ class Sprites {
 			rectangle.getChildren().add(vBox);
 			rectangle.getChildren().add(spacer);
 			rectangle.getChildren().add(pane);
-			rectangle.setAccessibleText(Hotel.hotel_id[i]);
 			int finalI = i;
 			int finalI1 = i;
 			rectangle.setOnMouseClicked(event -> {
@@ -278,6 +274,35 @@ class Sprites {
 			rectangle.getChildren().add(vBox);
 			rectangle.getChildren().add(spacer);
 			rectangle.getChildren().add(pane);
+			int finalI = i;
+			int finalI1 = i;
+			rectangle.setOnMouseClicked(event -> {
+				FlightsUI.flight_id = Flights.flight_number[finalI];
+				Parent root = null;
+				try
+				{
+					root = FXMLLoader.load(Sprites.class.getResource("FlightsUI.fxml"));
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				try
+				{
+					ConnectionClass.getFlights();
+				}
+				catch (ClassNotFoundException | SQLException e)
+				{
+					e.printStackTrace();
+				}
+				Scene scene = new Scene(root,1300,700);
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				stage.setScene(scene);
+				stage.setTitle(Flights.airlines_name[finalI1] + "(" + Flights.flight_number[finalI1] + ")");
+				stage.setMinWidth(1000);
+				stage.setMinHeight(700);
+				stage.show();
+			});
 			rectangleList.add(rectangle);
 		}
 		return rectangleList;
@@ -302,7 +327,7 @@ class Sprites {
 
 	static List<HBox> createClickableTrains() throws SQLException {
 		List<HBox> rectangleList = new ArrayList<>();
-		Trains trains = new Trains();
+		new Trains();
 		for (int i = 0; i < 18; i++) {
 			HBox rectangle = new HBox();
 			rectangle.setMinHeight(150);
@@ -388,6 +413,35 @@ class Sprites {
 			rectangle.getChildren().add(vBox);
 			rectangle.getChildren().add(spacer);
 			rectangle.getChildren().add(pane);
+			int finalI = i;
+			int finalI1 = i;
+			rectangle.setOnMouseClicked(event -> {
+				TrainsUI.train_id = Trains.train_number[finalI];
+				Parent root = null;
+				try
+				{
+					root = FXMLLoader.load(Sprites.class.getResource("TrainsUI.fxml"));
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				try
+				{
+					ConnectionClass.getFlights();
+				}
+				catch (ClassNotFoundException | SQLException e)
+				{
+					e.printStackTrace();
+				}
+				Scene scene = new Scene(root,1300,700);
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				stage.setScene(scene);
+				stage.setTitle(Trains.train_number[finalI]);
+				stage.setMinWidth(1000);
+				stage.setMinHeight(700);
+				stage.show();
+			});
 			rectangleList.add(rectangle);
 		}
 		return rectangleList;
@@ -439,14 +493,117 @@ class Sprites {
 			o_no_of_days.setMinHeight(50);
 			total_payment.setMinHeight(50);
 			rooms.setMinHeight(50);
-			rectangle.setSpacing(200);
-			o_hotel_name.setText("Hotel ID: " + OrderedHotels.hotel_id[u]);
+			rectangle.setSpacing(198);
+			try {
+				String hotel_Name = ConnectionClass.getHotelNameById(OrderedHotels.hotel_id[u]);
+				o_hotel_name.setText("Hotel Name: " + hotel_Name);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
 			o_no_of_days.setText("No. Of Days: " + OrderedHotels.no_of_days[u]);
 			total_payment.setText("Billed Amount: "+ OrderedHotels.total_payment[u]);
 			rooms.setText("Room No.: "+OrderedHotels.room_no[u]);
 			rectangle.getChildren().add(o_hotel_name);
 			rectangle.getChildren().add(o_no_of_days);
 			rectangle.getChildren().add(rooms);
+			rectangle.getChildren().add(total_payment);
+			rectangleList.add(rectangle);
+		}
+		new OrderedFlights();
+		for(int u = 0; u<OrderedFlights.airline_name.size();u++)
+		{
+			HBox rectangle = new HBox();
+			rectangle.setMinHeight(75);
+			rectangle.setMinWidth(1300);
+			rectangle.setBackground(new Background(new BackgroundFill(color,
+					CornerRadii.EMPTY, Insets.EMPTY)));
+			rectangle.setOnMouseEntered(event -> {
+				rectangle.setBackground(new Background(new BackgroundFill(color1,
+						CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			rectangle.setOnMouseExited(event -> {
+				rectangle.setBackground(new Background(new BackgroundFill(color,
+						CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			Label airline_name = new Label();
+			Label flight_id = new Label();
+			Label origin = new Label();
+			Label dest= new Label();
+			Label arrival= new Label();
+			Label departure = new Label();
+			Label seat_no= new Label();
+			Label total_payment= new Label();
+			airline_name.setMinHeight(50);
+			flight_id.setMinHeight(50);
+			origin.setMinHeight(50);
+			dest.setMinHeight(50);
+			arrival.setMinHeight(50);
+			departure.setMinHeight(50);
+			seat_no.setMinHeight(50);
+			total_payment.setMinHeight(50);
+			rectangle.setSpacing(45);
+			airline_name.setText("Airline: " + OrderedFlights.airline_name.get(u));
+			flight_id.setText("Flight No.: " + OrderedFlights.flight_id.get(u));
+			origin.setText("Source: " + OrderedFlights.origin.get(u));
+			dest.setText("Destination: " + OrderedFlights.dest.get(u));
+			arrival.setText("Arrival: " + OrderedFlights.arrival_time.get(u));
+			departure.setText("Departure: " + OrderedFlights.departure_time.get(u));
+			seat_no.setText("Seat No: " + OrderedFlights.seat_no.get(u));
+			total_payment.setText("Billed Amount: " + OrderedFlights.final_price.get(u));
+			rectangle.getChildren().add(airline_name);
+			rectangle.getChildren().add(flight_id);
+			rectangle.getChildren().add(origin);
+			rectangle.getChildren().add(dest);
+			rectangle.getChildren().add(arrival);
+			rectangle.getChildren().add(departure);
+			rectangle.getChildren().add(seat_no);
+			rectangle.getChildren().add(total_payment);
+			rectangleList.add(rectangle);
+		}
+		new OrderedTrains();
+		for(int u = 0; u<OrderedTrains.train_id.size();u++)
+		{
+			HBox rectangle = new HBox();
+			rectangle.setMinHeight(75);
+			rectangle.setMinWidth(1300);
+			rectangle.setBackground(new Background(new BackgroundFill(color,
+					CornerRadii.EMPTY, Insets.EMPTY)));
+			rectangle.setOnMouseEntered(event -> {
+				rectangle.setBackground(new Background(new BackgroundFill(color1,
+						CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			rectangle.setOnMouseExited(event -> {
+				rectangle.setBackground(new Background(new BackgroundFill(color,
+						CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			Label train_id = new Label();
+			Label origin = new Label();
+			Label dest= new Label();
+			Label arrival_day= new Label();
+			Label departure = new Label();
+			Label seat_no= new Label();
+			Label total_payment= new Label();
+			train_id.setMinHeight(50);
+			origin.setMinHeight(50);
+			dest.setMinHeight(50);
+			arrival_day.setMinHeight(50);
+			departure.setMinHeight(50);
+			seat_no.setMinHeight(50);
+			total_payment.setMinHeight(50);
+			rectangle.setSpacing(67);
+			train_id.setText("Train No.: " + OrderedTrains.train_id.get(u));
+			origin.setText("Source: " + OrderedTrains.origin.get(u));
+			dest.setText("Destination: " + OrderedTrains.dest.get(u));
+			arrival_day.setText("Arrival Day: " + OrderedTrains.arrival_day.get(u));
+			departure.setText("Departure: " + OrderedTrains.departure_time.get(u));
+			seat_no.setText("Seat No: " + OrderedTrains.seat_no.get(u));
+			total_payment.setText("Billed Amount: " + OrderedTrains.final_price.get(u));
+			rectangle.getChildren().add(train_id);
+			rectangle.getChildren().add(origin);
+			rectangle.getChildren().add(dest);
+			rectangle.getChildren().add(arrival_day);
+			rectangle.getChildren().add(departure);
+			rectangle.getChildren().add(seat_no);
 			rectangle.getChildren().add(total_payment);
 			rectangleList.add(rectangle);
 		}

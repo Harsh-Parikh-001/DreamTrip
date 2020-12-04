@@ -39,29 +39,5 @@ public class OrderedHotels
             i += 1;
         }
         no = i;
-//        try
-//        {
-//            rs2 = dba.getHotelNameAndId();
-//        }
-//        catch (ClassNotFoundException e)
-//        {
-//            e.printStackTrace();
-//        }
-//        while(rs2.next() && i != 21)
-//        {
-//            Hotel_Curr_Id[i] = rs2.getString("Hotel_id");
-//            Hotel_Curr_Names[i] = rs2.getString("Hotel_name");
-//        }
-//        for (int j = 0; j < i; j++)
-//        {
-//            String h = hotel_id[j];
-//            int n = 0;
-//            while (!h.equals(Hotel_Curr_Id[n]) && n != 21 && rs2.next())
-//            {
-//                n++;
-//            }
-//            hotel_name[j] = Hotel_Curr_Names[n];
-//            System.out.println(hotel_name[j] + hotel_id[j]);
-//        }
     }
 }

@@ -153,10 +153,12 @@ public class RegisterPage implements Initializable
 		{
 			e.printStackTrace();
 		}
-		Scene scene = new Scene(root, 1300, 700);
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		Scene scene = new Scene(root,800,700);
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage.setMinWidth(800);
+		stage.setMinHeight(700);
 		stage.setScene(scene);
-		stage.setTitle("DreamTrip");
+		stage.setTitle("Login");
 		stage.show();
 	}
 }
