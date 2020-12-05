@@ -1,5 +1,4 @@
 package com.DreamTrip.UI;
-import com.DreamTrip.Connectivity.ConnectionClass;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Preloader;
