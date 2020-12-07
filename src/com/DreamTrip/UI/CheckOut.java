@@ -8,9 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -51,6 +49,6 @@ public class CheckOut implements Initializable {
 			stage.setTitle("DreamTrip Navigator");
 			stage.show();
 		});
-		label_lb.setText("Mr/Mrs. "+LoginPage.customer+", the Hotel has been added to Your Orders.");
+		label_lb.setText("Mr/Mrs. "+LoginPage.customer+", the Order has been added to Your Orders.");
 	}
 }
