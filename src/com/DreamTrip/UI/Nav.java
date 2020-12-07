@@ -8,7 +8,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,43 +35,40 @@ public class Nav implements Initializable {
 	Label past_orders_lbl;
 
 	public static int cond = 1;
-
-	Color color1 = Color.web("#A9A9A9");
-	Color color = Color.web("#D3D3D3");
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		switch (cond)
 		{
 			case 1:
 			{
-				scrollPane.setContent(Sprites.createHotels());
 				hotel_id.setText("Hotels >");
+				scrollPane.setContent(Sprites.createHotels());
 				flight_id.setText("Flights");
 				train_id.setText("Trains");
-				past_orders_lbl.setText("Past Orders");
+				past_orders_lbl.setText("Your Orders");
 				break;
 			}
 			case 2:
 			{
-				scrollPane.setContent(Sprites.createFlights());
 				flight_id.setText("Flights >");
+				scrollPane.setContent(Sprites.createFlights());
 				train_id.setText("Trains");
 				hotel_id.setText("Hotels");
-				past_orders_lbl.setText("Past Orders");
+				past_orders_lbl.setText("Your Orders");
 				break;
 			}
 			case 3:
 			{
-				scrollPane.setContent(Sprites.createTrains());
 				train_id.setText("Trains >");
+				scrollPane.setContent(Sprites.createTrains());
 				flight_id.setText("Flights");
 				hotel_id.setText("Hotels");
-				past_orders_lbl.setText("Past Orders");
+				past_orders_lbl.setText("Your Orders");
 				break;
 			}
 			case 4:
 			{
-				past_orders_lbl.setText("Past Orders >");
+				past_orders_lbl.setText("Your Orders >");
 				scrollPane.setContent(Sprites.createLog());
 				train_id.setText("Trains");
 				hotel_id.setText("Hotels");
@@ -90,7 +86,7 @@ public class Nav implements Initializable {
 		}
 		past_orders_lbl.setOnMouseClicked(event ->
 		{
-			past_orders_lbl.setText("Past Orders >");
+			past_orders_lbl.setText("Your Orders >");
 			scrollPane.setContent(Sprites.createLog());
 			train_id.setText("Trains");
 			hotel_id.setText("Hotels");
@@ -102,21 +98,21 @@ public class Nav implements Initializable {
 			scrollPane.setContent(Sprites.createFlights());
 			train_id.setText("Trains");
 			hotel_id.setText("Hotels");
-			past_orders_lbl.setText("Past Orders");
+			past_orders_lbl.setText("Your Orders");
 		});
 		train_id.setOnMouseClicked(event -> {
 			train_id.setText("Trains >");
 			scrollPane.setContent(Sprites.createTrains());
 			flight_id.setText("Flights");
 			hotel_id.setText("Hotels");
-			past_orders_lbl.setText("Past Orders");
+			past_orders_lbl.setText("Your Orders");
 		});
 		hotel_id.setOnMouseClicked(event -> {
 			hotel_id.setText("Hotels >");
 			scrollPane.setContent(Sprites.createHotels());
 			flight_id.setText("Flights");
 			train_id.setText("Trains");
-			past_orders_lbl.setText("Past Orders");
+			past_orders_lbl.setText("Your Orders");
 		});
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);

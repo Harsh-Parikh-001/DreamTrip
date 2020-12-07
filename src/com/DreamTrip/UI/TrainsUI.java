@@ -130,6 +130,8 @@ public class TrainsUI implements Initializable
         }
         try
         {
+            train_seats.clear();
+            train_seat_types.clear();
             while(rs.next())
             {
                 train_seats.add(rs.getString("no_of_seats"));

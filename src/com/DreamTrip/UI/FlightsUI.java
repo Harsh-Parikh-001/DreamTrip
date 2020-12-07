@@ -135,6 +135,8 @@ public class FlightsUI implements Initializable
             throwables.printStackTrace();
         }
         try {
+            airline_seats.clear();
+            airline_seat_types.clear();
             while(rs.next()) {
                 airline_seats.add(rs.getString("no_of_seats"));
                 airline_seat_types.add(rs.getString("seat_type"));

@@ -133,6 +133,8 @@ public class HotelUI implements Initializable {
 			throwables.printStackTrace();
 		}
 		try {
+			rooms.clear();
+			room_type.clear();
 			while(rs.next()) {
 				rooms.add(rs.getString("room_no"));
 				room_type.add(rs.getString("type"));
@@ -204,12 +206,6 @@ public class HotelUI implements Initializable {
 		l12.setText("Choose the Room No: ");
 		l12.setFont(Font.font(20));
 		TextField tf = new TextField();
-		tf.setPrefWidth(300);
-		tf.setMaxWidth(300);
-		ChoiceBox c = new ChoiceBox();
-		c.setPrefHeight(30);
-		c.setPrefWidth(300);
-		c.setMaxWidth(300);
 		tf.setOnMouseExited(event -> {
 			String st = tf.getText();
 			try
@@ -227,6 +223,12 @@ public class HotelUI implements Initializable {
 				e.printStackTrace();
 			}
 		});
+		tf.setPrefWidth(300);
+		tf.setMaxWidth(300);
+		ChoiceBox c = new ChoiceBox();
+		c.setPrefHeight(30);
+		c.setPrefWidth(300);
+		c.setMaxWidth(300);
 		c.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
