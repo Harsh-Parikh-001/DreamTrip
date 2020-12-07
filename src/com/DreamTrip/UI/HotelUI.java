@@ -204,12 +204,17 @@ public class HotelUI implements Initializable {
 		l12.setText("Choose the Room No: ");
 		l12.setFont(Font.font(20));
 		TextField tf = new TextField();
+		tf.setPrefWidth(300);
+		tf.setMaxWidth(300);
+		ChoiceBox c = new ChoiceBox();
+		c.setPrefHeight(30);
+		c.setPrefWidth(300);
+		c.setMaxWidth(300);
 		tf.setOnMouseExited(event -> {
 			String st = tf.getText();
 			try
 			{
-				assert st != null;
-				if (st != null && Integer.parseInt(st)<=60 && Integer.parseInt(st)>0)
+				if (!st.isEmpty() && Integer.parseInt(st)<=15 && Integer.parseInt(st)>0)
 				{
 					int re = Integer.parseInt(st);
 					noOfDays = re;
@@ -222,12 +227,6 @@ public class HotelUI implements Initializable {
 				e.printStackTrace();
 			}
 		});
-		tf.setPrefWidth(300);
-		tf.setMaxWidth(300);
-		ChoiceBox c = new ChoiceBox();
-		c.setPrefHeight(30);
-		c.setPrefWidth(300);
-		c.setMaxWidth(300);
 		c.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
@@ -241,7 +240,7 @@ public class HotelUI implements Initializable {
 					ty = 1.5f;
 				}
 				String st = tf.getText();
-				if (st != null && Integer.parseInt(st)<=60 && Integer.parseInt(st)>0) {
+				if (!st.isEmpty()  && Integer.parseInt(st)<=15 && Integer.parseInt(st)>0) {
 					int re = Integer.parseInt(st);
 					noOfDays = re;
 					finalPayment = Float.parseFloat(hotel_price)*re*ty;
