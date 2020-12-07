@@ -49,6 +49,6 @@ public class CheckOut implements Initializable {
 			stage.setTitle("DreamTrip Navigator");
 			stage.show();
 		});
-		label_lb.setText("Mr/Mrs. "+LoginPage.customer+", the Order has been added to Your Orders.");
+		label_lb.setText("Mr/Mrs. "+LoginPage.customer+", Your Order is Placed.");
 	}
 }
