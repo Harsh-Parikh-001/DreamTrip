@@ -2,13 +2,21 @@ package com.DreamTrip.UI;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -33,7 +41,8 @@ public class Nav implements Initializable {
 	Label hotel_id;
 	@FXML
 	Label past_orders_lbl;
-
+	@FXML
+	Label logout_lbl;
 	public static int cond = 1;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -84,6 +93,28 @@ public class Nav implements Initializable {
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}
+		logout_lbl.setOnMouseClicked(event -> {
+			Parent root = null;
+			try
+			{
+				root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(root,800,700);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.setMinWidth(800);
+			stage.setMinHeight(700);
+			stage.setScene(scene);
+			stage.setTitle("DreamTrip");
+			stage.show();
+			Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+			stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+			stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+		});
 		past_orders_lbl.setOnMouseClicked(event ->
 		{
 			past_orders_lbl.setText("Your Orders >");
