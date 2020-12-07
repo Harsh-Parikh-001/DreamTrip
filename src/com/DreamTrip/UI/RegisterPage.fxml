@@ -7,7 +7,12 @@
 
 <AnchorPane style="-fx-background-color: #008080;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DreamTrip.UI.RegisterPage">
     <children>
-        <Label alignment="CENTER" layoutX="137.0" layoutY="36.0" text="Register with DreamTrip" textAlignment="JUSTIFY" textFill="#f8f5f5" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="36.0">
+       <Label fx:id="back_l" prefHeight="50.0" prefWidth="144.0" text="   &lt; Back" textFill="#fffafa" textAlignment="CENTER">
+          <font>
+             <Font size="15.0" />
+          </font>
+       </Label>
+       <Label alignment="CENTER" layoutX="137.0" layoutY="36.0" text="Register with DreamTrip" textAlignment="JUSTIFY" textFill="#f8f5f5" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="36.0">
             <font>
                 <Font size="40.0" />
             </font>

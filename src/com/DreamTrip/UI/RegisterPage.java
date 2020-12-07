@@ -4,13 +4,16 @@ import com.DreamTrip.Connectivity.ConnectionClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -32,9 +35,33 @@ public class RegisterPage implements Initializable
 	TextField contact_tf;
 	@FXML
 	TextField psswd_tf;
+	@FXML
+	Label back_l;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		back_l.setOnMouseClicked(event -> {
+			Parent root = null;
+			try
+			{
+				root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(root,800,700);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.setMinWidth(800);
+			stage.setMinHeight(700);
+			stage.setScene(scene);
+			stage.setTitle("DreamTrip");
+			stage.show();
+			Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+			stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+			stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+		});
 		email_tf.setOnMouseExited(event ->
 		{
 			String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
@@ -160,5 +187,8 @@ public class RegisterPage implements Initializable
 		stage.setScene(scene);
 		stage.setTitle("Login");
 		stage.show();
+		Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+		stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+		stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
 	}
 }

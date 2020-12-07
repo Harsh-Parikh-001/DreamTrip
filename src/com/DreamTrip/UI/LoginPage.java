@@ -37,6 +37,9 @@ public class LoginPage implements Initializable
 	@FXML
 	CheckBox show_psswd;
 
+	@FXML
+	Label back_l;
+
 	static ResultSet rs;
 	static String customer;
 	static String customer_id;
@@ -82,6 +85,28 @@ public class LoginPage implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		back_l.setOnMouseClicked(event -> {
+			Parent root = null;
+			try
+			{
+				root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			Scene scene = new Scene(root,800,700);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			stage.setMinWidth(800);
+			stage.setMinHeight(700);
+			stage.setScene(scene);
+			stage.setTitle("DreamTrip");
+			stage.show();
+			Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+			stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+			stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
+		});
 		txt_psswd.setManaged(false);
 		txt_psswd.setVisible(false);
 		psswd.textProperty().bindBidirectional(txt_psswd.textProperty());

@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -48,6 +50,9 @@ public class CheckOut implements Initializable {
 			stage.setScene(scene);
 			stage.setTitle("DreamTrip Navigator");
 			stage.show();
+			Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+			stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+			stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
 		});
 		label_lb.setText("Mr/Mrs. "+LoginPage.customer+", Your Order is Placed.");
 	}
