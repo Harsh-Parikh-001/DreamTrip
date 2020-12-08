@@ -552,7 +552,7 @@ class Sprites {
 			departure.setMinHeight(50);
 			seat_no.setMinHeight(50);
 			total_payment.setMinHeight(50);
-			rectangle.setSpacing(45);
+			rectangle.setSpacing(40);
 			airline_name.setText("Airline: " + OrderedFlights.airline_name.get(u));
 			flight_id.setText("Flight No.: " + OrderedFlights.flight_id.get(u));
 			origin.setText("Source: " + OrderedFlights.origin.get(u));
@@ -601,7 +601,7 @@ class Sprites {
 			departure.setMinHeight(50);
 			seat_no.setMinHeight(50);
 			total_payment.setMinHeight(50);
-			rectangle.setSpacing(67);
+			rectangle.setSpacing(60);
 			train_id.setText("Train No.: " + OrderedTrains.train_id.get(u));
 			origin.setText("Source: " + OrderedTrains.origin.get(u));
 			dest.setText("Destination: " + OrderedTrains.dest.get(u));
